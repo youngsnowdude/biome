@@ -1,1 +1,351 @@
 
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kuo · Властелин 2 · 4025 MMR</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Inter:opsz,wght@14..32,400;14..32,600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #0b0d15;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            font-family: 'Inter', sans-serif;
+            padding: 20px;
+        }
+
+        .card {
+            max-width: 680px;
+            width: 100%;
+            background: linear-gradient(145deg, #12141f, #1a1d2b);
+            border-radius: 48px;
+            padding: 40px 36px 44px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8), 0 0 0 1px rgba(255, 255, 255, 0.02);
+            transition: transform 0.25s ease;
+            border: 1px solid rgba(255, 215, 0, 0.06);
+        }
+
+        .card:hover {
+            transform: scale(1.01);
+        }
+
+        .top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 28px;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .badge-rank {
+            background: #f7c948;
+            color: #0b0d15;
+            font-weight: 700;
+            font-size: 14px;
+            letter-spacing: 0.5px;
+            padding: 6px 18px;
+            border-radius: 100px;
+            box-shadow: 0 0 20px rgba(247, 201, 72, 0.2);
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .badge-rank span {
+            font-size: 18px;
+        }
+
+        .mmr-badge {
+            background: rgba(255, 255, 255, 0.04);
+            padding: 6px 18px;
+            border-radius: 100px;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            color: #b7c0d0;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .mmr-badge strong {
+            color: #fff;
+            font-weight: 700;
+        }
+
+        .hero {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+            margin-bottom: 32px;
+            flex-wrap: wrap;
+        }
+
+        .hero-icon {
+            width: 88px;
+            height: 88px;
+            background: linear-gradient(135deg, #f7c948, #e5a823);
+            border-radius: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 42px;
+            box-shadow: 0 8px 24px rgba(247, 201, 72, 0.15);
+            flex-shrink: 0;
+        }
+
+        .hero-info h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 900;
+            font-size: 32px;
+            color: #fff;
+            letter-spacing: -0.5px;
+            line-height: 1.1;
+        }
+
+        .hero-info .sub {
+            color: #99a4b9;
+            font-size: 15px;
+            margin-top: 4px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .hero-info .sub .rank-badge {
+            background: rgba(247, 201, 72, 0.12);
+            color: #f7c948;
+            padding: 2px 14px;
+            border-radius: 100px;
+            font-weight: 600;
+            font-size: 13px;
+        }
+
+        .record {
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 24px;
+            padding: 20px 24px;
+            margin-bottom: 32px;
+            border-left: 4px solid #f7c948;
+            backdrop-filter: blur(4px);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .record .stat {
+            display: flex;
+            align-items: baseline;
+            gap: 6px;
+        }
+
+        .record .stat .num {
+            font-size: 26px;
+            font-weight: 700;
+            color: #fff;
+            font-family: 'Orbitron', sans-serif;
+            letter-spacing: 0.5px;
+        }
+
+        .record .stat .label {
+            color: #99a4b9;
+            font-size: 14px;
+            font-weight: 400;
+        }
+
+        .record .desc {
+            color: #cbd2e0;
+            font-size: 14px;
+            line-height: 1.5;
+            max-width: 280px;
+        }
+
+        .achievements {
+            list-style: none;
+            padding: 0;
+            margin-bottom: 36px;
+        }
+
+        .achievements li {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 12px 16px;
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 16px;
+            margin-bottom: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.02);
+            transition: background 0.2s ease;
+            color: #d6dce8;
+            font-size: 15px;
+        }
+
+        .achievements li:hover {
+            background: rgba(255, 255, 255, 0.04);
+        }
+
+        .achievements li .icon {
+            font-size: 20px;
+            width: 32px;
+            text-align: center;
+            flex-shrink: 0;
+        }
+
+        .achievements li strong {
+            color: #fff;
+            font-weight: 600;
+        }
+
+        .cta {
+            display: block;
+            width: 100%;
+            padding: 16px;
+            background: linear-gradient(135deg, #f7c948, #e5a823);
+            border: none;
+            border-radius: 40px;
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 700;
+            font-size: 16px;
+            letter-spacing: 0.5px;
+            color: #0b0d15;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            box-shadow: 0 8px 28px rgba(247, 201, 72, 0.15);
+            text-align: center;
+            text-decoration: none;
+        }
+
+        .cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 36px rgba(247, 201, 72, 0.25);
+            background: #fcd34d;
+        }
+
+        .cta:active {
+            transform: scale(0.97);
+        }
+
+        .footer-note {
+            margin-top: 20px;
+            text-align: center;
+            font-size: 13px;
+            color: #4d5368;
+            letter-spacing: 0.3px;
+        }
+
+        .footer-note a {
+            color: #8f99b3;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .footer-note a:hover {
+            color: #f7c948;
+        }
+
+        @media (max-width: 480px) {
+            .card {
+                padding: 24px 18px 32px;
+            }
+            .hero-info h1 {
+                font-size: 26px;
+            }
+            .record {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .record .desc {
+                max-width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="card">
+
+    <div class="top">
+        <div class="badge-rank">
+            <span>🏆</span> Игрок
+        </div>
+        <div class="mmr-badge">
+            MMR <strong>4025</strong> · Ранг <strong>Властелин 2</strong>
+        </div>
+    </div>
+
+    <div class="hero">
+        <div class="hero-icon">⚡</div>
+        <div class="hero-info">
+            <h1>kuo</h1>
+            <div class="sub">
+                <span>core / mid</span>
+                <span class="rank-badge">✦ Властелин 2</span>
+                <span style="color:#5f6a80;">•</span>
+                <span style="color:#5f6a80;">Dota 2</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="record">
+        <div style="display:flex; flex-wrap:wrap; gap:16px 28px;">
+            <div class="stat">
+                <span class="num">4 025</span>
+                <span class="label">MMR</span>
+            </div>
+            <div class="stat">
+                <span class="num">926</span>
+                <span class="label">матчей</span>
+            </div>
+            <div class="stat">
+                <span class="num">24.05.2023</span>
+                <span class="label">начало пути</span>
+            </div>
+        </div>
+        <div class="desc">
+            ⭐ <strong>Властелин 2</strong> — стабильный игрок с опытом более 900 матчей.
+        </div>
+    </div>
+
+    <ul class="achievements">
+        <li>
+            <span class="icon">🏅</span>
+            <span><strong>Ранг Властелин 2</strong> — 4025 MMR. Активный игрок.</span>
+        </li>
+        <li>
+            <span class="icon">⚔️</span>
+            <span><strong>926 матчей</strong> на высоком уровне .</span>
+        </li>
+        <li>
+            <span class="icon">📅</span>
+            <span>Играет с <strong>24 мая 2023</strong> .</span>
+        </li>
+        <li>
+            <span class="icon">📊</span>
+            <span>Стабильный рост и развитие в Dota 2.</span>
+        </li>
+    </ul>
+
+    <a href="#" class="cta">
+        🔥 Предложить сотрудничество
+    </a>
+
+    <div class="footer-note">
+        <a href="https://steamcommunity.com/id/scarelone/" target="_blank">kuo</a> · 4025 MMR · аккаунт проверен
+    </div>
+
+</div>
+
+</body>
+</html>
